@@ -1,0 +1,20 @@
+services:
+  # Central Database (PostgreSQL)
+  #Used for User accounts and Order data
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ecommerce_db
+    ports:
+      - "5432:5432"
+
+  #Message Broker(Redis)
+  #User for real_time chat syncing and caching
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
